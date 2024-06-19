@@ -15,49 +15,32 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
    // Creating all our variables, we will initialize them and set their values later
-   WPI_TalonFX leftLeader;
-   WPI_TalonFX leftFollower;
-   WPI_TalonFX rightLeader;
-   WPI_TalonFX rightFollower;
-   DifferentialDrive drive;
-   public DigitalInput limitSwitch;
+   //create motors
+   //create differential drive
   
 
   public DriveSubsystem() {
      //initialize motor controllers
-     leftLeader = new WPI_TalonFX(Constants.leftLeaderCANID);
-     leftFollower = new WPI_TalonFX(Constants.leftFollowerCANID);
-     rightLeader = new WPI_TalonFX(Constants.rightLeaderCANID);
-     rightFollower = new WPI_TalonFX(Constants.rightFollowerCANID);
-     leftLeader.configFactoryDefault();
-     leftFollower.configFactoryDefault();
-     rightLeader.configFactoryDefault();
-     rightFollower.configFactoryDefault();
+     
+     //set to factory defaults
+
      //set motors to default to braking
-     leftLeader.setNeutralMode(NeutralMode.Brake);
-     rightLeader.setNeutralMode(NeutralMode.Brake);
-     leftFollower.setNeutralMode(NeutralMode.Brake);
-     rightFollower.setNeutralMode(NeutralMode.Brake);
+     
 
-    drive = new DifferentialDrive(
-      leftLeader,
-      rightLeader
-    );
+    //create differential drive
+
     //Makes follower motors do the same thing as the leaders so that we don't have to pass arguments for all four
-    leftFollower.follow(leftLeader);
-    rightFollower.follow(rightLeader);
+    
 
-    // inverts left motors from the right motors because they are inverted 180 degrees
-    leftFollower.setInverted(true);
-    leftLeader.setInverted(true);
+    // invert left motors from the right motors because they are inverted 180 degrees
+    
     
     
     
   }
 
   public void drive(double left, double right) {
-    drive.tankDrive(left, right);
-    System.out.println("left: "+ left+ ", right: "+ right);
+    //Drive command
   }
 
   @Override

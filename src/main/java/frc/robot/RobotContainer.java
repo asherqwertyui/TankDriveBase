@@ -20,22 +20,15 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final DriveSubsystem driveSubsystem = new DriveSubsystem();
+  //make drive subsystem
 
-  private final XboxController driveController = new XboxController(Constants.XboxControllerPort);
+  //make controller
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
-    driveSubsystem.setDefaultCommand(
-            new RunCommand(
-                    () -> {
-                      driveSubsystem.drive(0.55*driveController.getLeftY(), 0.55*driveController.getRightY());
-                    }
-            , driveSubsystem)
-    );
+    
   
   }
 
