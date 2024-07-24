@@ -15,8 +15,8 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
    // Creating all our variables, we will initialize them and set their values later
-   //create motors
-   //create differential drive
+   //create motors : motorcontrolers are talon srx/ talon fx in code : check pheonix 5 docs
+   //create differential drive or arcade drive : check WPILib docs
   
 
   public DriveSubsystem() {

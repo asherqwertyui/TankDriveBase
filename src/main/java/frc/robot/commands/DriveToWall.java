@@ -33,8 +33,8 @@ public class DriveToWall extends Command {
   public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
-  @Override
+ /*  @Override
   public boolean isFinished() {
     return subsystem.limitSwitch.get();
-  }
+  }*/
 }
