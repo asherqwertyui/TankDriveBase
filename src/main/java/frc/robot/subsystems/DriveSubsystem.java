@@ -18,17 +18,29 @@ public class DriveSubsystem extends SubsystemBase {
    //create motors : motorcontrolers are talon srx/ talon fx in code : check pheonix 5 docs
    //create differential drive or arcade drive : check WPILib docs
   
-
-  public DriveSubsystem() {
+  WPI_TalonFX leftLeader;
+  WPI_TalonFX rightLeader;
+  WPI_TalonFX leftFollower;
+  WPI_TalonFX rightFollower;
+  DifferentialDrive drive;
+  public DriveSubsystem() { 
      //initialize motor controllers
-     
+     leftLeader = new WPI_TalonFX(6);
+     rightLeader = new WPI_TalonFX(8);
+     leftFollower = new WPI_TalonFX(5);
+     rightFollower = new WPI_TalonFX(7);
      //set to factory defaults
-
+    leftLeader.configFactoryDefault();
+    rightLeader.configFactoryDefault();
+    leftFollower.configFactoryDefault();
+    rightFollower.configFactoryDefault();
      //set motors to default to braking
-     
-
+    leftLeader.setNeutralMode(NeutralMode.Brake);
+    rightLeader.setNeutralMode(NeutralMode.Brake);
+    leftFollower.setNeutralMode(NeutralMode.Brake);
+    rightFollower.setNeutralMode(NeutralMode.Brake);
     //create differential drive
-
+    drive = new DifferentialDrive(leftLeader, rightLeader);
     //Makes follower motors do the same thing as the leaders so that we don't have to pass arguments for all four
     
 
@@ -41,6 +53,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void drive(double left, double right) {
     //Drive command
+    drive.tankDrive(left, right);
   }
 
   @Override

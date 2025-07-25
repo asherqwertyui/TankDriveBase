@@ -21,15 +21,23 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //make drive subsystem
-
+  private final DriveSubsystem driveSubsystem = new DriveSubsystem();
   //make controller
-  
+  private final XboxController driverController = new XboxController(0); // 0 is the USB Port to be used as indicated on the Driver Station
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
-    
-  
+    configureButtonBindings();
+    driveSubsystem.setDefaultCommand(
+      new RunCommand(
+        () -> {
+          driveSubsystem.drive(driverController.getLeftY(),driverController.getRightY());
+        }
+        , driveSubsystem)
+      
+    );
   }
 
   /**
@@ -40,12 +48,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //map buttons if needed
-    XboxController joystickXboxController = new XboxController(0); // 0 is the USB Port to be used as indicated on the Driver Station
-  }
+
+  } 
    
   
 
-  public DriveSubsystem getDriveSubsystem(DriveSubsystem driveSubsystem) {
+  public DriveSubsystem getDriveSubsystem() {
     return driveSubsystem;
   }
   
